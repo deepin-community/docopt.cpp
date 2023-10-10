@@ -1,0 +1,2 @@
+Tests: docopt.cpp-examples
+Depends: @, cmake, g++ | c++-compiler
