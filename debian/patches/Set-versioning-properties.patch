@@ -1,0 +1,23 @@
+From: Ghislain Antony Vaillant <ghisvail@gmail.com>
+Date: Thu, 8 Dec 2016 10:50:08 +0000
+Subject: Set versioning properties
+
+---
+ CMakeLists.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ee01e7c..eaa85e5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -75,6 +75,10 @@ if(NOT MSVC)
+ 	set_target_properties(docopt_s PROPERTIES OUTPUT_NAME docopt)
+ endif()
+ 
++set_target_properties(docopt PROPERTIES
++        VERSION ${docopt.cpp_VERSION}
++        SOVERSION 0)
++
+ if(USE_BOOST_REGEX)
+ 	add_definitions("-DDOCTOPT_USE_BOOST_REGEX")
+ 	# This is needed on Linux, where linking a static library into docopt.so

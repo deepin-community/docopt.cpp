@@ -1,5 +1,56 @@
-template-repository (1.0-1) unstable; urgency=medium
+docopt.cpp (0.6.2-2.4) unstable; urgency=medium
 
-  * Initial release
+  * Non-maintainer upload.
+  * Bump minimum required cmake version to 3.11 to fix autopkgtests
+    (Closes: #1040733)
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Thu, 20 Jul 2023 11:52:23 +0200
+
+docopt.cpp (0.6.2-2.3) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Uploading to unstable.
+
+ -- Daniel Baumann <daniel.baumann@progress-linux.org>  Tue, 17 Aug 2021 05:44:44 +0200
+
+docopt.cpp (0.6.2-2.2) experimental; urgency=medium
+
+  * Non-maintainer upload.
+  * Including docopt.cpp in /usr/include as referenced in docopt.h
+    for packages that need it (Closes: #991256).
+
+ -- Daniel Baumann <daniel.baumann@progress-linux.org>  Sun, 18 Jul 2021 21:20:36 +0200
+
+docopt.cpp (0.6.2-2.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Add upstream patch to fix compilation with GCC 10 (Closes: #957147)
+
+ -- Kunal Mehta <legoktm@debian.org>  Fri, 24 Jul 2020 22:34:42 -0700
+
+docopt.cpp (0.6.2-2) unstable; urgency=medium
+
+  * Switch from git-dpm to gbp
+    - Drop git-dpm configuration
+    - Unapply patch queue
+    - Add gbp configuration
+  * Refresh and drop numbering of the patch queue
+  * Fixup the VCS-Browser URI
+  * Support the nocheck build profile
+    - Add versioned b-dep on dpkg-dev
+    - Mark test b-deps as !nocheck
+    - Use DEB_BUILD_PROFILES in nocheck guards
+  * Run the tests using Python 3 instead of Python 2
+    - Testing now depends on any Python 3 interpreter
+    - New patch Make-tests-compatible-with-Python-3.patch
+  * Fixup the Maintainer and Uploaders fields
+    - Move myself from Maintainer to Uploaders
+    - Set the Debian Science Team as Maintainer
+
+ -- Ghislain Antony Vaillant <ghisvail@gmail.com>  Sun, 05 Mar 2017 09:17:13 +0000
+
+docopt.cpp (0.6.2-1) unstable; urgency=low
+
+  * Initial release. (Closes: #847384)
+
+ -- Ghislain Antony Vaillant <ghisvail@gmail.com>  Thu, 08 Dec 2016 10:52:18 +0000

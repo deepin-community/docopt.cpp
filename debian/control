@@ -1,15 +1,72 @@
-Source: template-repository
-Section: unknown
+Source: docopt.cpp
+Maintainer: Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Ghislain Antony Vaillant <ghisvail@gmail.com>
+Section: libs
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Build-Depends: cmake (>= 3.1),
+               debhelper (>= 10),
+               dpkg-dev (>= 1.17.14),
+               python3:any <!nocheck>
+Standards-Version: 3.9.8
+Vcs-Browser: https://anonscm.debian.org/git/debian-science/packages/docopt.cpp.git
+Vcs-Git: https://anonscm.debian.org/git/debian-science/packages/docopt.cpp.git
+Homepage: https://github.com/docopt/docopt.cpp
 
-Package: template-repository
+Package: libdocopt0
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Multi-Arch: same
+Depends: ${misc:Depends},
+         ${shlibs:Depends}
+Description: C++11 port of docopt
+ With docopt, the option parser is generated based on the program's docstring.
+ docopt parses the usage pattern ("Usage: ...") and option descriptions (lines
+ starting with dash "-") and ensures that the program invocation matches the
+ usage pattern. It parses options, arguments and commands based on that. The
+ basic idea is that a good help message has all necessary information in it to
+ make a parser.
+ .
+ This is a port of the docopt Python module to C++ with a focus on maintaining
+ full feature parity (and code structure) as the original. The differences from
+ the Python port are:
+ .
+   - The addition of a docopt_parse function, which does not terminate the
+     program on error a docopt::value type to hold the various value types that
+     can be parsed.
+ .
+   - Because C++ is statically-typed and Python is not, some changes were made
+     to the interfaces of the internal parse tree types.
+ .
+   - Because std::regex does not have an equivalent to Python's regex.split,
+     some of the regex's had to be restructured and additional loops used.
+ .
+ This package provides the shared libraries.
+
+Package: libdocopt-dev
+Architecture: any
+Multi-Arch: same
+Section: libdevel
+Depends: ${misc:Depends},
+         libdocopt0 (= ${binary:Version})
+Description: development files for docopt.cpp
+ With docopt, the option parser is generated based on the program's docstring.
+ docopt parses the usage pattern ("Usage: ...") and option descriptions (lines
+ starting with dash "-") and ensures that the program invocation matches the
+ usage pattern. It parses options, arguments and commands based on that. The
+ basic idea is that a good help message has all necessary information in it to
+ make a parser.
+ .
+ This is a port of the docopt Python module to C++ with a focus on maintaining
+ full feature parity (and code structure) as the original. The differences from
+ the Python port are:
+ .
+   - The addition of a docopt_parse function, which does not terminate the
+     program on error a docopt::value type to hold the various value types that
+     can be parsed.
+ .
+   - Because C++ is statically-typed and Python is not, some changes were made
+     to the interfaces of the internal parse tree types.
+ .
+   - Because std::regex does not have an equivalent to Python's regex.split,
+     some of the regex's had to be restructured and additional loops used.
+ .
+ This package provides the development files.

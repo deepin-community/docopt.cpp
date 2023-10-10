@@ -1,0 +1,30 @@
+#!/bin/sh
+# Copyright 2016 Ghislain Antony Vaillant
+#
+# This file is part of the packaging testsuite for docopt.cpp.
+
+set -e
+
+cp examples/naval_fate.cpp $AUTOPKGTEST_TMP
+cd $AUTOPKGTEST_TMP
+
+cat << EOF > CMakeLists.txt
+cmake_minimum_required(VERSION 3.11)
+project(docopt.cpp-examples)
+
+find_package(docopt)
+add_executable(naval_fate naval_fate.cpp)
+target_link_libraries(naval_fate docopt)
+
+EOF
+
+mkdir build
+cd build
+cmake ..
+cmake --build .
+echo "=== help ==="
+./naval_fate --help
+echo "=== version ==="
+./naval_fate --version
+echo "=== run ==="
+./naval_fate ship new boaty
